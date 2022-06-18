@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+service ToDo {
+    rpc ListAll(EmptyMessage) returns (ToDoList) {}
+    rpc Add(Task) returns (Task) {}
+}
+
+message EmptyMessage {}
+
+message Task {
+    int32 id = 1;
+    string description = 2;
+}
+
+message ToDoList {
+    repeated Task tasks = 1;
+}
